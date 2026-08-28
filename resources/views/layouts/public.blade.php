@@ -3,9 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $company->name ?? 'BMEX Money Changer' }}</title>
-    <link rel="icon" type="image/png" href="{{ asset('bmex.png') }}?v=1.0">
-    <link rel="apple-touch-icon" href="{{ asset('bmex.png') }}?v=1.0">
+    <title>{{ $company->name ?? 'Bali Money Exchange' }}</title>
+
+    <!-- Theme Color untuk Navbar Browser Android -->
+    <meta name="theme-color" content="#0A1245">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Favicon & Icon Android/Apple -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('bmex.png') }}?v=3.0">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('bmex.png') }}?v=3.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('bmex.png') }}?v=3.0">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="{{ asset('manifest.json') }}?v=3.0">
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <!-- Tailwind CDN untuk memastikan CSS termuat sempurna -->
     <script src="https://cdn.tailwindcss.com"></script>
