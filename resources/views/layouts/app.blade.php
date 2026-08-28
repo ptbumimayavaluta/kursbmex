@@ -7,12 +7,14 @@
     <!-- Judul Tab Browser -->
     <title>{{ $company->name ?? 'Bali Money Exchange' }} - Board Rate Valas</title>
 
-    <!-- FAVICON LINK: Mengarahkan ke public/bmex.png -->
+    <!-- FAVICON LINK -->
     <link rel="icon" type="image/png" href="{{ asset('bmex.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('bmex.png') }}">
 
+    <!-- Vite Assets -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <!-- Tailwind CDN -->
+
+    <!-- Tailwind CDN (Opsional jika Vite sudah dikonfigurasi) -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-[#050B2E] text-white min-h-screen font-sans antialiased">
@@ -49,6 +51,7 @@
             </div>
         @endif
 
+        <!-- Konten Halaman Dipanggil di Sini -->
         @yield('content')
     </main>
 
