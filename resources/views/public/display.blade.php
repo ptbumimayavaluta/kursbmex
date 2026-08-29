@@ -87,7 +87,7 @@
             </div>
             <div>
                 <label class="block text-xs font-bold text-gray-300 mb-1.5">Jumlah Valas</label>
-                <input type="number" id="calc_amount" value="100" oninput="calculate()" class="w-full bg-[#050B2E] border border-amber-500/40 text-white font-mono text-sm font-bold rounded-xl p-2.5 sm:p-3 focus:ring-2 focus:ring-amber-400 focus:outline-none">
+                <input type="number" id="calc_amount" value="0" oninput="calculate()" class="w-full bg-[#050B2E] border border-amber-500/40 text-white font-mono text-sm font-bold rounded-xl p-2.5 sm:p-3 focus:ring-2 focus:ring-amber-400 focus:outline-none">
             </div>
             <div>
                 <label class="block text-xs font-bold text-gray-300 mb-1.5">Estimasi Total Rupiah (IDR)</label>
@@ -141,7 +141,7 @@
 
         <!-- Tombol Kontak -->
         <div class="space-y-3">
-            <h3 class="text-base sm:text-lg font-bold text-amber-400">Hubungi / Kunjungi Kami</h3>
+            <h3 class="text-base sm:text-lg font-bold text-amber-400">Contact Us</h3>
             <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3">
                 @if($company && $company->whatsapp)
                 <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $company->whatsapp) }}" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs sm:text-sm font-bold p-2.5 sm:p-3 rounded-xl flex items-center justify-center gap-2 transition shadow-lg">
@@ -172,7 +172,7 @@
         <!-- Google Maps Embed -->
         <div class="pt-4 border-t border-slate-800 space-y-3">
             <h3 class="text-xs sm:text-sm font-bold text-amber-400 flex items-center gap-2">
-                <span>📍</span> Lokasi Kami di Google Maps
+                <span>📍</span> Our Location on Google Maps
             </h3>
             <div class="w-full h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden border border-amber-500/20 shadow-inner">
                 <iframe 
@@ -184,7 +184,6 @@
                 </iframe>
             </div>
         </div>
-
     </section>
 
 </div>
