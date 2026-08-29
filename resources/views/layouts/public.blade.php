@@ -60,15 +60,32 @@
     </main>
 
     <script>
-        function updateClock() {
+        function updateHeaderClock() {
             const now = new Date();
+            
+            // Format Waktu Realtime (HH:MM:SS)
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
-            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+            const timeString = `${hours}:${minutes}:${seconds}`;
+
+            // Format Tanggal Realtime (contoh: Saturday, 29 August 2026)
+            const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+            const dateString = now.toLocaleDateString('en-US', options);
+
+            // Update Elemen HTML
+            const timeElement = document.getElementById('header-realtime-time');
+            const dateElement = document.getElementById('header-realtime-date');
+
+            if (timeElement) timeElement.textContent = timeString;
+            if (dateElement) dateElement.textContent = dateString;
         }
-        setInterval(updateClock, 1000);
-        updateClock();
+
+        // Jalankan setiap 1 detik (1000ms)
+        setInterval(updateHeaderClock, 1000);
+
+        // Jalankan pertama kali saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', updateHeaderClock);
     </script>
 </body>
 </html>
