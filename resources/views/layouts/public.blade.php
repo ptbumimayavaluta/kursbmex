@@ -25,27 +25,19 @@
 <body class="bg-[#050B2E] text-white min-h-screen font-sans antialiased">
 
     <!-- Header Navy BMEX -->
-    <header class="bg-[#0A1245] border-b-2 border-amber-400 sticky top-0 z-50 shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                @if(isset($company->logo) && $company->logo)
-                    <img src="{{ asset('storage/' . $company->logo) }}" alt="BMEX Logo" class="h-12 w-auto rounded border border-amber-400/40">
-                @else
-                    <div class="bg-amber-400 text-[#0A1245] font-black text-2xl px-3.5 py-1 rounded shadow-lg tracking-wider">BMEX</div>
-                @endif
-                <div>
-                    <h1 class="text-xl md:text-2xl font-black text-amber-400 tracking-wider uppercase">
-                        {{ $company->name ?? 'BMEX MONEY CHANGER' }}
-                    </h1>
-                    <p class="text-xs text-amber-200/80 font-medium hidden sm:block">
-                        {{ $company->address ?? 'Authorized Money Changer' }}
-                    </p>
-                </div>
+    <header class="bg-[#0A1245] border-b border-amber-500/30 py-3 px-4 shadow-lg">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+            <!-- Logo / Nama Perusahaan -->
+            <div class="flex items-center gap-2">
+                <img src="{{ asset('bmex.png') }}" class="w-8 h-8 sm:w-10 sm:h-10 object-contain" alt="Logo">
+                <h1 class="text-base sm:text-xl md:text-2xl font-black text-amber-400 tracking-wide">
+                    {{ $company->name ?? 'BALI MONEY EXCHANGE' }}
+                </h1>
             </div>
-            
-            <div class="text-right bg-[#050B2E]/60 px-4 py-1.5 rounded-xl border border-amber-400/30">
-                <div id="clock" class="text-xl md:text-2xl font-mono font-black text-amber-400">00:00:00</div>
-                <div class="text-xs text-gray-300 font-medium">{{ \Carbon\Carbon::now()->translatedFormat('l, d F Y') }}</div>
+
+            <!-- Waktu Realtime -->
+            <div class="text-xs sm:text-sm font-mono font-bold text-gray-300 bg-[#050B2E] px-3 py-1.5 rounded-lg border border-amber-500/20">
+                🕒 <span id="realtime-clock">--:--:--</span> WITA
             </div>
         </div>
     </header>
