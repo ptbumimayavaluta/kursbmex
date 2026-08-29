@@ -25,10 +25,10 @@
 <body class="bg-[#050B2E] text-white min-h-screen font-sans antialiased">
 
     <!-- Header Navy BMEX -->
-    <header class="bg-[#0A1245] border-b-2 border-amber-500 py-2 px-3 sm:px-6 shadow-xl">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4">
+    <header class="bg-[#0A1245] border-b-2 border-amber-500 py-2.5 px-3 sm:px-6 shadow-xl">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-4">
             
-            <!-- SISIK KIRI: LOGO & NAMA TOKO -->
+            <!-- SISI KIRI: LOGO & NAMA TOKO -->
             <div class="flex items-center justify-center sm:justify-start gap-2.5 sm:gap-4 w-full sm:w-auto">
                 <!-- Box Logo BMEX -->
                 <div class="bg-amber-400 text-[#0A1245] font-black text-lg sm:text-2xl px-3 py-1.5 rounded-xl shadow-md tracking-wider shrink-0">
@@ -36,18 +36,18 @@
                 </div>
                 
                 <!-- Nama Perusahaan -->
-                <h1 class="text-amber-400 font-black text-sm sm:text-2xl md:text-3xl tracking-wide uppercase leading-tight text-center sm:text-left">
+                <h1 class="text-amber-400 font-black text-base sm:text-2xl md:text-3xl tracking-wide uppercase leading-tight text-center sm:text-left">
                     BALI MONEY EXCHANGE
                 </h1>
             </div>
 
             <!-- SISI KANAN: WAKTU & TANGGAL REALTIME -->
-            <div class="bg-[#050B2E] border border-amber-500/30 rounded-xl px-3 py-1.5 text-center min-w-[140px] sm:min-w-[180px]">
-                <div id="realtime-time" class="text-amber-400 font-mono font-black text-base sm:text-2xl leading-none">
-                    19:54:45
+            <div class="bg-[#050B2E] border border-amber-500/40 rounded-xl px-4 py-1.5 text-center min-w-[150px] sm:min-w-[200px] shadow-inner">
+                <div id="header-realtime-time" class="text-amber-400 font-mono font-black text-lg sm:text-2xl tracking-wider leading-none">
+                    00:00:00
                 </div>
-                <div id="realtime-date" class="text-gray-200 font-bold text-[10px] sm:text-xs mt-1">
-                    Saturday, 29 August 2026
+                <div id="header-realtime-date" class="text-gray-200 font-bold text-[11px] sm:text-xs mt-1">
+                    --
                 </div>
             </div>
 
