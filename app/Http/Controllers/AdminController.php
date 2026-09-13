@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Currency;
 use App\Models\CompanyProfile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class AdminController extends Controller
 {
@@ -116,5 +118,21 @@ class AdminController extends Controller
         }
 
         return redirect()->back()->with('success', 'Semua kurs mata uang berhasil diperbarui!');
+    }
+    public function updatePassword(Request $request)
+    {
+        $validated = $request->validate([
+            'current_password' => ['required', 'current_password'],
+            'password' => ['required', Password::defaults(), 'confirmed'],
+        ], [
+            'current_password.current_password' => 'Password saat ini tidak cocok.',
+            'password.confirmed' => 'Konfirmasi password baru tidak cocok.',
+        ]);
+
+        $request->user()->update([
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        return redirect()->back()->with('success', 'Password berhasil diperbarui!');
     }
 }

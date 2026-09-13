@@ -21,8 +21,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::delete('/currencies/{currency}', [AdminController::class, 'destroyCurrency'])->name('admin.currencies.destroy');
 
     Route::get('/company', [AdminController::class, 'editCompany'])->name('admin.company.edit');
-    // Diubah menjadi POST untuk kestabilan submit form
     Route::post('/company', [AdminController::class, 'updateCompany'])->name('admin.company.update');
+    Route::put('/update-password', [AdminController::class, 'updatePassword'])->name('admin.password.update');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
