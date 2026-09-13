@@ -41,14 +41,14 @@
             </div>
         </div>
 
-        <!-- 4. INFO LAST UPDATE (LANGSUNG TAMPIL DI HEADER) -->
+        <!-- 4. INFO LAST UPDATE (SUDAH ADA NAMA HARI) -->
         @php
             $lastUpdated = \App\Models\Currency::max('updated_at');
         @endphp
         <div class="bg-[#050B2E] px-3 py-1 rounded-full border border-amber-400/30 text-amber-300 font-mono text-[11px] flex items-center gap-1.5 shadow-inner mt-1">
             <span class="animate-pulse">🔄</span> Last Update: 
             <span class="text-white font-bold">
-                {{ $lastUpdated ? \Carbon\Carbon::parse($lastUpdated)->setTimezone('Asia/Makassar')->translatedFormat('d M Y - H:i:s') : '-' }} WITA
+                {{ $lastUpdated ? \Carbon\Carbon::parse($lastUpdated)->setTimezone('Asia/Makassar')->translatedFormat('l, d M Y - H:i:s') : '-' }} WITA
             </span>
         </div>
 
@@ -58,16 +58,6 @@
     <main class="flex-grow py-4 sm:py-6">
         @yield('content')
     </main>
-
-    <!-- FOOTER INFO LAST UPDATE RATE -->
-    @php
-        $lastUpdated = \App\Models\Currency::max('updated_at');
-    @endphp
-    <footer class="bg-[#0A1245] border-t border-amber-500/30 py-3 px-4 sm:px-8 text-center text-xs font-bold text-gray-400 flex justify-center items-center">
-        <div>
-            &copy; {{ date('Y') }} {{ $company->name ?? 'Bali Money Exchange' }}. All rights reserved.
-        </div>
-    </footer>
 
     <!-- SCRIPT JAM REALTIME -->
     <script>
