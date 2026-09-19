@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-4xl mx-auto space-y-6">
+<div class="max-w-7xl mx-auto space-y-6 px-2 sm:px-4">
     
     <div>
-        <h1 class="text-2xl font-black text-amber-400">Pengaturan Profil & Running Text</h1>
+        <h1 class="text-xl sm:text-2xl font-black text-amber-400">Pengaturan Profil & Running Text</h1>
         <p class="text-xs text-gray-400">Kelola teks berjalan, kontak toko, dan tautan sosial media.</p>
     </div>
 
@@ -16,7 +16,6 @@
     </div>
     @endif
 
-    <!-- Alert Notifikasi Validation Error -->
     @if($errors->any())
     <div class="bg-red-500/20 border border-red-500 text-red-300 px-4 py-3 rounded-xl text-sm">
         <p class="font-bold mb-1">Terjadi kesalahan input:</p>
@@ -28,7 +27,7 @@
     </div>
     @endif
 
-    <form action="{{ route('admin.company.update') }}" method="POST" class="bg-[#0A1245] border border-amber-500/30 rounded-2xl p-6 md:p-8 shadow-2xl space-y-6">
+    <form action="{{ route('admin.company.update') }}" method="POST" class="bg-[#0A1245] border border-amber-500/30 rounded-2xl p-4 sm:p-6 md:p-8 shadow-2xl space-y-6">
         @csrf
 
         <!-- Running Text -->
@@ -40,7 +39,7 @@
         <hr class="border-slate-800">
 
         <!-- Informasi Umum Toko -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
                 <label class="block text-xs font-bold text-gray-300 mb-1">Nama Perusahaan / Toko</label>
                 <input type="text" name="name" value="{{ old('name', $company->name ?? '') }}" class="w-full bg-[#050B2E] border border-slate-700 text-white rounded-xl p-3 focus:ring-2 focus:ring-amber-400 focus:outline-none">
@@ -73,7 +72,7 @@
 
         <!-- Sosial Media & Maps -->
         <h3 class="text-sm font-bold text-amber-400">Tautan Sosial Media & Lokasi</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <div>
                 <label class="block text-xs font-bold text-gray-300 mb-1">Link Google Maps</label>
                 <input type="text" name="google_maps_link" value="{{ old('google_maps_link', $company->google_maps_link ?? '') }}" class="w-full bg-[#050B2E] border border-slate-700 text-white rounded-xl p-3 focus:ring-2 focus:ring-amber-400 focus:outline-none">
@@ -82,14 +81,14 @@
                 <label class="block text-xs font-bold text-gray-300 mb-1">Link Instagram</label>
                 <input type="text" name="instagram" value="{{ old('instagram', $company->instagram ?? '') }}" class="w-full bg-[#050B2E] border border-slate-700 text-white rounded-xl p-3 focus:ring-2 focus:ring-amber-400 focus:outline-none">
             </div>
-            <div>
+            <div class="sm:col-span-2 lg:col-span-1">
                 <label class="block text-xs font-bold text-gray-300 mb-1">Link Facebook</label>
                 <input type="text" name="facebook" value="{{ old('facebook', $company->facebook ?? '') }}" class="w-full bg-[#050B2E] border border-slate-700 text-white rounded-xl p-3 focus:ring-2 focus:ring-amber-400 focus:outline-none">
             </div>
         </div>
 
         <div class="flex justify-end pt-4">
-            <button type="submit" class="bg-amber-400 hover:bg-amber-300 text-[#0A1245] font-black px-8 py-3 rounded-xl shadow-lg transition transform active:scale-95 flex items-center gap-2">
+            <button type="submit" class="w-full sm:w-auto justify-center bg-amber-400 hover:bg-amber-300 text-[#0A1245] font-black px-8 py-3 rounded-xl shadow-lg transition transform active:scale-95 flex items-center gap-2">
                 <span>💾</span> SIMPAN PROFIL PERUSAHAAN
             </button>
         </div>

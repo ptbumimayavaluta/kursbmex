@@ -17,49 +17,83 @@
     <!-- Tailwind CDN (Opsional jika Vite sudah dikonfigurasi) -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-[#050B2E] text-white min-h-screen font-sans antialiased">
+<body class="bg-[#050B2E] text-white min-h-screen font-sans antialiased flex flex-col">
 
     <!-- Top Admin Bar -->
-    <header class="bg-[#0A1245] border-b border-amber-500/30 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
-            <div class="flex items-center gap-6">
-                <span class="font-black text-amber-400 text-xl tracking-wider">BMEX ADMIN</span>
-                <nav class="flex gap-4">
-                    <a href="{{ route('admin.currencies.index') }}" class="text-sm font-bold text-gray-200 hover:text-amber-400 transition">Kelola Kurs</a>
-                    <a href="{{ route('admin.company.edit') }}" class="text-sm font-bold text-gray-200 hover:text-amber-400 transition">Profil Perusahaan</a>
-                    <a href="{{ route('public.display') }}" target="_blank" class="text-sm font-bold text-amber-400 hover:underline flex items-center gap-1">
+    <header class="bg-[#0A1245] border-b border-amber-500/30 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="h-16 flex justify-between items-center">
+                <!-- Logo BMEX -->
+                <div class="flex items-center gap-6">
+                    <span class="font-black text-amber-400 text-lg sm:text-xl tracking-wider">BMEX ADMIN</span>
+                    
+                    <!-- Navigasi Desktop -->
+                    <nav class="hidden md:flex gap-4">
+                        <a href="{{ route('admin.currencies.index') }}" class="text-sm font-bold text-gray-200 hover:text-amber-400 transition">Kelola Kurs</a>
+                        <a href="{{ route('admin.company.edit') }}" class="text-sm font-bold text-gray-200 hover:text-amber-400 transition">Profil Perusahaan</a>
+                        <a href="{{ route('public.display') }}" target="_blank" class="text-sm font-bold text-amber-400 hover:underline flex items-center gap-1">
+                            <span>🌐</span> Lihat Display Utama
+                        </a>
+                    </nav>
+                </div>
+                
+                <!-- Actions Desktop (Ubah Password & Logout) -->
+                <div class="hidden md:flex items-center gap-3">
+                    <button type="button" onclick="openPasswordModal()" class="text-xs font-bold text-amber-400 hover:text-amber-300 border border-amber-500/30 px-3 py-1.5 rounded-lg bg-amber-950/30 flex items-center gap-1 transition">
+                        <span>🔑</span> Ubah Password
+                    </button>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="text-xs font-bold text-red-400 hover:text-red-300 border border-red-500/30 px-3 py-1.5 rounded-lg bg-red-950/30 transition">
+                            Logout
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Tombol Hamburger (Hanya Tampil di HP/Mobile) -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-amber-400 hover:text-amber-300 p-2 text-xl focus:outline-none">
+                    ☰
+                </button>
+            </div>
+
+            <!-- Menu Dropdown Mobile (Khusus HP) -->
+            <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800 py-4 space-y-3">
+                <nav class="flex flex-col space-y-2">
+                    <a href="{{ route('admin.currencies.index') }}" class="text-sm font-bold text-gray-200 hover:text-amber-400 transition py-1">Kelola Kurs</a>
+                    <a href="{{ route('admin.company.edit') }}" class="text-sm font-bold text-gray-200 hover:text-amber-400 transition py-1">Profil Perusahaan</a>
+                    <a href="{{ route('public.display') }}" target="_blank" class="text-sm font-bold text-amber-400 hover:underline flex items-center gap-1 py-1">
                         <span>🌐</span> Lihat Display Utama
                     </a>
                 </nav>
-            </div>
-            
-            <!-- Actions (Ubah Password & Logout) -->
-            <div class="flex items-center gap-3">
-                <button type="button" onclick="openPasswordModal()" class="text-xs font-bold text-amber-400 hover:text-amber-300 border border-amber-500/30 px-3 py-1.5 rounded-lg bg-amber-950/30 flex items-center gap-1 transition">
-                    <span>🔑</span> Ubah Password
-                </button>
-
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="text-xs font-bold text-red-400 hover:text-red-300 border border-red-500/30 px-3 py-1.5 rounded-lg bg-red-950/30 transition">
-                        Logout
+                
+                <div class="pt-3 border-t border-slate-800/80 flex flex-col gap-2">
+                    <button type="button" onclick="openPasswordModal()" class="w-full text-center text-xs font-bold text-amber-400 border border-amber-500/30 py-2 rounded-lg bg-amber-950/30 transition">
+                        🔑 Ubah Password
                     </button>
-                </form>
+
+                    <form method="POST" action="{{ route('logout') }}" class="w-full">
+                        @csrf
+                        <button type="submit" class="w-full text-center text-xs font-bold text-red-400 border border-red-500/30 py-2 rounded-lg bg-red-950/30 transition">
+                            Logout
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-6 sm:py-8 flex-1 w-full overflow-x-hidden">
         <!-- Alert Sukses -->
         @if(session('success'))
-            <div class="mb-6 p-4 bg-green-900/50 border border-green-500 text-green-300 rounded-xl font-bold flex items-center gap-2">
+            <div class="mb-6 p-4 bg-green-900/50 border border-green-500 text-green-300 rounded-xl font-bold flex items-center gap-2 text-sm sm:text-base">
                 <span>✅</span> {{ session('success') }}
             </div>
         @endif
 
         <!-- Alert Validation Error khusus Modal Password -->
         @if($errors->has('current_password') || $errors->has('password'))
-            <div class="mb-6 p-4 bg-red-900/50 border border-red-500 text-red-300 rounded-xl font-bold flex items-center gap-2">
+            <div class="mb-6 p-4 bg-red-900/50 border border-red-500 text-red-300 rounded-xl font-bold flex items-center gap-2 text-sm sm:text-base">
                 <span>⚠️</span> Terjadi kesalahan saat mengubah password. Silakan coba lagi.
             </div>
         @endif
@@ -70,9 +104,9 @@
 
     <!-- MODAL UBAH PASSWORD -->
     <div id="passwordModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-[#0A1245] border-2 border-amber-500/40 w-full max-w-md rounded-2xl p-6 shadow-2xl relative">
+        <div class="bg-[#0A1245] border-2 border-amber-500/40 w-full max-w-md rounded-2xl p-4 sm:p-6 shadow-2xl relative">
             <div class="flex justify-between items-center mb-4">
-                <h3 class="text-lg font-black text-amber-400 flex items-center gap-2">
+                <h3 class="text-base sm:text-lg font-black text-amber-400 flex items-center gap-2">
                     <span>🔑</span> Ubah Password Admin
                 </h3>
                 <button onclick="closePasswordModal()" class="text-gray-400 hover:text-white font-bold text-xl">&times;</button>
@@ -116,6 +150,13 @@
     </div>
 
     <script>
+        // Toggle Menu Mobile (Hamburger)
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Modal Password Functions
         function openPasswordModal() {
             document.getElementById('passwordModal').classList.remove('hidden');
         }
