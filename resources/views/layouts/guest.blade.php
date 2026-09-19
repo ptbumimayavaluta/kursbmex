@@ -11,6 +11,10 @@
         <link rel="icon" type="image/png" href="{{ asset('bmex.png') }}">
         <link rel="apple-touch-icon" href="{{ asset('bmex.png') }}">
 
+        <!-- MANIFEST & PWA CONFIG -->
+        <link rel="manifest" href="{{ asset('manifest.json') }}">
+        <meta name="theme-color" content="#0A1245">
+
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600,700&display=swap" rel="stylesheet" />
@@ -18,6 +22,15 @@
         <!-- Scripts & Styles -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <script src="https://cdn.tailwindcss.com"></script>
+
+        <!-- REGISTER SERVICE WORKER -->
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/sw.js');
+                });
+            }
+        </script>
     </head>
     <body class="font-sans antialiased bg-[#050B2E] text-white selection:bg-amber-500 selection:text-black">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">

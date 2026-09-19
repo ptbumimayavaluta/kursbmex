@@ -2,7 +2,7 @@
   "name": "Bali Money Exchange",
   "short_name": "BMEX",
   "description": "Board Rate Valas Bali Money Exchange",
-  "start_url": "/?utm_source=homescreen",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#050B2E",
@@ -13,13 +13,13 @@
       "src": "/bmex.png?v=3.0",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/bmex.png?v=3.0",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
