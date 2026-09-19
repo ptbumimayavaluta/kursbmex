@@ -9,8 +9,21 @@
     <link rel="icon" type="image/png" href="{{ asset('bmex.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('bmex.png') }}">
 
+    <!-- MANIFEST & PWA CONFIG (TAMBAHKAN INI) -->
+    <link rel="manifest" href="{{ asset('manifest.json') }}">
+    <meta name="theme-color" content="#0A1245">
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- REGISTER SERVICE WORKER (TAMBAHKAN INI) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js');
+            });
+        }
+    </script>
 </head>
 <body class="bg-[#050B2E] text-white min-h-screen font-sans antialiased flex flex-col justify-between">
 
