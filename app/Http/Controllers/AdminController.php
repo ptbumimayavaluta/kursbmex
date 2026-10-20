@@ -32,7 +32,7 @@ class AdminController extends Controller
 
             // GUNAKAN DOMAIN MC POS YANG BENAR DI SINI:
             $response = Http::withHeaders([
-                'X-API-Token' => 'KODE_RAHASIA_SERVER_ANDA_123', // Pastikan sama persis dengan api.php di MC POS
+                'X-API-Token' => 'bmex2026',
             ])->post('https://sistemapp.balimoneyexchange.my.id/api/v1/sync-rates', $payload);
 
             if ($response->failed()) {
