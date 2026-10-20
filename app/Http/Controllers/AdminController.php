@@ -30,17 +30,15 @@ class AdminController extends Controller
                 })->toArray()
             ];
 
-            // Tembak endpoint API MC POS
-            // Ganti URL 'https://pos.domainanda.com/api/v1/sync-rates' dengan URL POS Anda (atau http://IP_SERVER:8000/api/v1/sync-rates jika lokal)
+            // GUNAKAN DOMAIN MC POS YANG BENAR DI SINI:
             $response = Http::withHeaders([
-                'X-API-Token' => 'bmex2026', // Harus sama persis dengan token di api.php MC POS
-            ])->post('https://pos.domainanda.com/api/v1/sync-rates', $payload);
+                'X-API-Token' => 'KODE_RAHASIA_SERVER_ANDA_123', // Pastikan sama persis dengan api.php di MC POS
+            ])->post('https://sistemapp.balimoneyexchange.my.id/api/v1/sync-rates', $payload);
 
             if ($response->failed()) {
                 \Log::error('Gagal sinkronisasi kurs ke MC POS: ' . $response->body());
             }
         } catch (\Exception $e) {
-            // Ditangkap agar jika server MC POS offline, web rate tetap aman & tidak error 500
             \Log::error('Koneksi sync error ke MC POS: ' . $e->getMessage());
         }
     }
